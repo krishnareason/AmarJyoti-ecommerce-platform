@@ -1,0 +1,78 @@
+.landing-container {
+    height: 90vh; /* Takes up most of the viewport height */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    /* The background image will be set here */
+    background-image: url('../assets/images/background.jpg'); /* IMPORTANT: Image path */
+    background-size: cover;
+    background-position: center;
+}
+
+.landing-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+}
+
+.landing-content {
+    position: relative; /* Ensures this content sits on top of the overlay */
+    z-index: 2;
+    padding: 20px;
+}
+
+.landing-content h1 {
+    font-size: 4rem; /* Large text for the brand name */
+    font-family: 'Playfair Display', serif; /* An elegant, spiritual-feeling font */
+    margin-bottom: 0.5rem;
+}
+
+.landing-content p {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1.5rem; /* Space between the buttons */
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #f0ad4e; /* A warm, inviting gold/orange */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #eea236;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #fff;
+    color: #333;
+    transform: translateY(-2px);
+}

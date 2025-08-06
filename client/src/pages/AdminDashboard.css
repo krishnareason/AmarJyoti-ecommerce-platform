@@ -1,0 +1,27 @@
+.admin-dashboard {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.admin-dashboard h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    color: #333;
+}
+
+/* This is the main layout container for the two cards */
+.admin-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;       /* Allows cards to stack on smaller screens */
+    gap: 2rem;            /* This creates the space between the two cards */
+    align-items: stretch;   /* This is the key to making both cards the same height */
+}
+
+/* This targets both the form and table containers inside the wrapper */
+.add-product-container,
+.order-table-container-wrapper {
+    flex: 1;                /* This makes both cards grow to take up equal space */
+    min-width: 400px;       /* Sets a minimum width before they stack */
+}

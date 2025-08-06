@@ -1,0 +1,56 @@
+.order-history-page {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.order-history-page h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    padding: 1.5rem;
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.order-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.order-items-details h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.order-items-details ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.order-items-details li {
+    padding: 0.25rem 0;
+    color: #555;
+}

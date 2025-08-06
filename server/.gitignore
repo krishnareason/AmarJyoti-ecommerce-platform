@@ -1,0 +1,30 @@
+# Dependencies
+/node_modules
+
+# Environment variables - VERY IMPORTANT
+.env
+
+# Optional: Configuration files you want to keep local
+# As requested, we are ignoring db.js.
+# Note: This is not standard if your secrets are already in .env
+/config/db.js
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lcov.info
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional Editor files
+.vscode

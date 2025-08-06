@@ -1,0 +1,69 @@
+.profile-page {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.profile-page h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.profile-card {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.1rem;
+}
+
+.profile-detail:last-of-type {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.detail-value {
+    color: #555;
+    text-align: right;
+}
+
+.address-value {
+    white-space: pre-wrap; /* Allows the address to wrap lines */
+}
+
+.role-value {
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+.btn-edit-profile {
+    display: block;
+    width: 150px;
+    margin: 2rem auto 0 auto;
+    padding: 12px;
+    border: 1px solid #f0ad4e;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #f0ad4e;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-edit-profile:hover {
+    background-color: #f0ad4e;
+    color: white;
+}
