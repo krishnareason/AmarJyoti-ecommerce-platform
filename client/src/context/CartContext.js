@@ -46,12 +46,10 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    // --- NEW FUNCTION: To clear the cart after a successful order ---
     const clearCart = () => {
         setCartItems([]);
     };
     
-    // Add the new clearCart function to the value object
     const value = { cartItems, addToCart, removeFromCart, updateQuantity, clearCart };
 
     return (

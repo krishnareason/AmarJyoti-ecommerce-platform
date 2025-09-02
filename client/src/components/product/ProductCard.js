@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'; // <-- Add useContext
-import { CartContext } from '../../context/CartContext'; // <-- Import CartContext
+import React, { useContext } from 'react'; 
+import { CartContext } from '../../context/CartContext';
 import './Product.css';
 
 const ProductCard = ({ product }) => {
-    const { addToCart } = useContext(CartContext); // <-- Get the addToCart function
+    const { addToCart } = useContext(CartContext); 
     const placeholderImage = 'https://via.placeholder.com/300x300.png?text=AmarJyoti';
 
     return (

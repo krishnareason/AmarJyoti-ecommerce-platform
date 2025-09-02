@@ -1,5 +1,5 @@
 const db = require('../config/db');
-const argon2 = require('argon2'); // Using argon2
+const argon2 = require('argon2'); 
 const jwt = require('jsonwebtoken');
 
 exports.signup = async (req, res) => {
@@ -12,10 +12,7 @@ exports.signup = async (req, res) => {
         if (userExists.rows.length > 0) {
             return res.status(400).json({ msg: 'User with this email already exists.' });
         }
-
-        // Use argon2 to hash the password
         const hashedPassword = await argon2.hash(password);
-
         const newUserQuery = `
             INSERT INTO users (name, email, password, phone, address, role) 
             VALUES ($1, $2, $3, $4, $5, $6) 
@@ -38,8 +35,6 @@ exports.login = async (req, res) => {
         if (!user) {
             return res.status(400).json({ msg: 'Invalid credentials.' });
         }
-
-        // Use argon2.verify to compare passwords
         const isMatch = await argon2.verify(user.password, password);
         
         if (!isMatch) {
@@ -56,7 +51,6 @@ exports.login = async (req, res) => {
 };
 
 exports.updateUserProfile = async (req, res) => {
-    // We get the user's ID from the token to ensure they can only update their own profile
     const userId = req.user.id;
     const { name, phone, address } = req.body;
 

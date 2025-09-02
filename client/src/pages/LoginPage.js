@@ -1,20 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-// Import BOTH login functions and rename them to avoid conflicts
 import { login as userLoginApi, adminLogin as adminLoginApi } from '../api';
-import './SignupPage.css'; // We can continue to reuse these styles
+import './SignupPage.css';
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const { login } = useContext(AuthContext);
-
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
     const [error, setError] = useState('');
-    const [isAdminLogin, setIsAdminLogin] = useState(false); // <-- State for our new checkbox
+    const [isAdminLogin, setIsAdminLogin] = useState(false);
 
     const { email, password } = formData;
 
@@ -25,16 +23,13 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-
         try {
             let res;
-            // Check the state of the checkbox to decide which API to call
             if (isAdminLogin) {
                 res = await adminLoginApi(formData);
             } else {
                 res = await userLoginApi(formData);
             }
-            
             const { token, user } = res.data;
             login(token, user);
             navigate('/shop');
@@ -56,7 +51,6 @@ const LoginPage = () => {
                     <input type="password" id="password" name="password" value={password} onChange={handleChange} required />
                 </div>
 
-                {/* --- The New Checkbox --- */}
                 <div className="form-group-checkbox">
                     <input
                         type="checkbox"
@@ -78,7 +72,6 @@ const LoginPage = () => {
     );
 };
 
-// Add this style to your SignupPage.css or a new file
 const checkboxStyle = `
 .form-group-checkbox {
     display: flex;
@@ -97,6 +90,5 @@ const checkboxStyle = `
 const styleSheet = document.createElement("style");
 styleSheet.innerText = checkboxStyle;
 document.head.appendChild(styleSheet);
-
 
 export default LoginPage;

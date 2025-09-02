@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { getAllOrders } from '../../api';
+import { getAllOrders, updateOrderStatus } from '../../api'; 
 import './OrderTable.css';
 
 const OrderTable = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filterRole, setFilterRole] = useState(''); // State for the filter dropdown
+    const [filterRole, setFilterRole] = useState('');
 
-    // This effect will now re-run whenever the filterRole state changes
     useEffect(() => {
         const fetchAllOrders = async () => {
-            setLoading(true); // Set loading true on each fetch
+            setLoading(true);
             try {
                 const filters = {};
                 if (filterRole) {
@@ -25,13 +24,30 @@ const OrderTable = () => {
             }
         };
         fetchAllOrders();
-    }, [filterRole]); // Dependency array includes filterRole
+    }, [filterRole]);
+
+    const handleStatusChange = async (orderId, newStatus) => {
+        try {
+            await updateOrderStatus(orderId, newStatus);
+            setOrders(prevOrders =>
+                prevOrders.map(order =>
+                    order.id === orderId ? { ...order, status: newStatus } : order
+                )
+            );
+        } catch (error) {
+            console.error("Failed to update order status", error);
+            alert("Could not update order status.");
+        }
+    };
+
+    if (loading) {
+        return <p>Loading all orders...</p>;
+    }
 
     return (
-        <div className="order-table-container">
+        <>
             <h3>All Customer Orders</h3>
 
-            {/* --- FILTER CONTROLS --- */}
             <div className="filter-controls">
                 <label htmlFor="role-filter">Filter by Role:</label>
                 <select 
@@ -45,9 +61,7 @@ const OrderTable = () => {
                 </select>
             </div>
 
-            {loading ? (
-                <p>Loading all orders...</p>
-            ) : orders.length === 0 ? (
+            {orders.length === 0 ? (
                 <p>No orders found for the selected filter.</p>
             ) : (
                 <table>
@@ -58,6 +72,7 @@ const OrderTable = () => {
                             <th>Role</th>
                             <th>Order Date</th>
                             <th>Total Price</th>
+                            <th>Est. Delivery</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -69,13 +84,25 @@ const OrderTable = () => {
                                 <td className="role-cell">{order.customer_role}</td>
                                 <td>{new Date(order.order_date).toLocaleDateString()}</td>
                                 <td>${parseFloat(order.total_price).toFixed(2)}</td>
-                                <td>{order.status}</td>
+                                <td>{new Date(order.delivery_eta).toLocaleDateString()}</td>
+                                <td>
+                                    <select 
+                                        className="status-dropdown" 
+                                        value={order.status}
+                                        onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                                    >
+                                        <option value="Pending">Pending</option>
+                                        <option value="Shipped">Shipped</option>
+                                        <option value="Delivered">Delivered</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                    </select>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             )}
-        </div>
+        </>
     );
 };
 

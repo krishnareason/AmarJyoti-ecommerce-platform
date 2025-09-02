@@ -1,19 +1,17 @@
 const express = require('express');
 const router = express.Router();
-// --- 1. IMPORT THE NEW FUNCTION ---
-const { adminLogin, getAllOrders } = require('../controllers/adminController');
-const { addProduct } = require('../controllers/productController');
+const { adminLogin, getAllOrders, updateOrderStatus, getAnalytics } = require('../controllers/adminController');
+const { addProduct, getAllProductsAdmin, deleteProduct, updateProduct } = require('../controllers/productController');
 const authMiddleware = require('../middleware/authMiddleware');
 const adminMiddleware = require('../middleware/adminMiddleware');
 
-// Route to login as an admin
 router.post('/login', adminLogin);
-
-// Route for an admin to add a new product
 router.post('/products', authMiddleware, adminMiddleware, addProduct);
-
-// --- 2. ADD THE NEW ROUTE TO GET ALL ORDERS ---
+router.get('/products', authMiddleware, adminMiddleware, getAllProductsAdmin);
 router.get('/orders', authMiddleware, adminMiddleware, getAllOrders);
-
+router.patch('/orders/:orderId/status', authMiddleware, adminMiddleware, updateOrderStatus);
+router.delete('/products/:id', authMiddleware, adminMiddleware, deleteProduct);
+router.put('/products/:id', authMiddleware, adminMiddleware, updateProduct);
+router.get('/analytics', authMiddleware, adminMiddleware, getAnalytics);
 
 module.exports = router;

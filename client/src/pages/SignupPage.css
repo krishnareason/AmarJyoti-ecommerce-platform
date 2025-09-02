@@ -23,7 +23,7 @@
 }
 
 .signup-form .role-text {
-    color: #f0ad4e; /* Use the same warm color from the landing page */
+    color: #f0ad4e; 
     text-transform: capitalize;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .error-message {
-    color: #d9534f; /* A standard error red color */
+    color: #d9534f; 
     background-color: #f2dede;
     border: 1px solid #ebccd1;
     padding: 10px;

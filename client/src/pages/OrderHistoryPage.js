@@ -43,6 +43,12 @@ const OrderHistoryPage = () => {
                                 <div>
                                     <strong>Estimated Delivery:</strong> {new Date(order.delivery_eta).toLocaleDateString()}
                                 </div>
+                                <div>
+                                    <strong>Status:</strong>
+                                    <span className={`status-badge status-${order.status.toLowerCase()}`}>
+                                        {order.status}
+                                    </span>
+                                </div>
                                 <div className="order-total">
                                     <strong>Total:</strong> ${parseFloat(order.total_price).toFixed(2)}
                                 </div>

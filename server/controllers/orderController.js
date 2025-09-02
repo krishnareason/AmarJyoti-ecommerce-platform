@@ -1,7 +1,6 @@
 const db = require('../config/db');
 
 exports.createOrder = async (req, res) => {
-    // Check the user's role from the token. If they are an admin, deny the request.
     if (req.user.role === 'admin') {
         return res.status(403).json({ msg: 'Forbidden: Admins are not allowed to place orders.' });
     }
@@ -62,16 +61,11 @@ exports.createOrder = async (req, res) => {
     }
 };
 
-
-// --- NEW FUNCTION: Get all orders for the logged-in user ---
 exports.getMyOrders = async (req, res) => {
     try {
         const userId = req.user.id;
-        
-        // --- DEBUGGING LOGS ---
         console.log(`\n--- [GET MY ORDERS] ---`);
-        console.log(`Fetching orders for user_id: ${userId}`);
-        
+        console.log(`Fetching orders for user_id: ${userId}`); 
         const query = `
             SELECT 
                 o.id as order_id, 
@@ -96,7 +90,6 @@ exports.getMyOrders = async (req, res) => {
 
         console.log(`--- [GET MY ORDERS] SQL Query found ${ordersResult.rowCount} order(s).`);
         console.log(`--- [GET MY ORDERS] Sending data to frontend.`);
-        // --- END OF DEBUGGING ---
         
         res.json(ordersResult.rows);
 

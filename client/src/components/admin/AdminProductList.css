@@ -1,0 +1,32 @@
+.admin-product-list-container h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.admin-product-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+.admin-product-list-container th, .admin-product-list-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-product-list-container thead th {
+    background-color: #f9f9f9;
+}
+
+.admin-product-list-container .btn-edit, .admin-product-list-container .btn-delete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    color: white;
+}
+
+.btn-edit { background-color: #337ab7; }
+.btn-delete { background-color: #d9534f; }

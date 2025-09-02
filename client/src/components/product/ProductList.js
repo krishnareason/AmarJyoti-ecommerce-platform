@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard';
-import './Product.css'; // We will create this shared CSS file
+import './Product.css'; 
 
 const ProductList = ({ products }) => {
     return (

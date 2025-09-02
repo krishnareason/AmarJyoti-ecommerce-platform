@@ -4,13 +4,12 @@ import { updateUserProfile } from '../api';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
-    const { user, login } = useContext(AuthContext); // Get the 'login' function to update context
+    const { user, login } = useContext(AuthContext); 
     
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
     const [message, setMessage] = useState('');
 
-    // When the user data is loaded or changes, update our form data
     useEffect(() => {
         if (user) {
             setFormData({
@@ -29,11 +28,9 @@ const ProfilePage = () => {
         e.preventDefault();
         try {
             const res = await updateUserProfile(formData);
-            // After successful save, update the user in our global context and localStorage
-            // We reuse the 'login' function for this, but only need the user part
             login(localStorage.getItem('token'), res.data); 
             setMessage('Profile updated successfully!');
-            setIsEditing(false); // Switch back to view mode
+            setIsEditing(false);
         } catch (error) {
             console.error('Failed to update profile', error);
             setMessage('Error updating profile.');
@@ -50,7 +47,6 @@ const ProfilePage = () => {
             {message && <p className="success-message">{message}</p>}
             
             {isEditing ? (
-                // --- EDIT MODE ---
                 <form className="profile-card" onSubmit={handleSave}>
                     <div className="profile-detail">
                         <label className="detail-label" htmlFor="name">Full Name:</label>
@@ -74,7 +70,6 @@ const ProfilePage = () => {
                     </div>
                 </form>
             ) : (
-                // --- VIEW MODE ---
                 <div className="profile-card">
                     <div className="profile-detail">
                         <span className="detail-label">Full Name:</span>

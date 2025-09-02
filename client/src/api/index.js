@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// 1. Create the base axios instance with the backend URL
 const API = axios.create({ baseURL: 'http://localhost:5000/api' });
 
-// 2. Use an interceptor to automatically add the auth token to every request
 API.interceptors.request.use((req) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -20,14 +18,19 @@ export const adminLogin = (formData) => API.post('/admin/login', formData);
 // --- Product Functions ---
 export const fetchProducts = () => API.get('/products');
 export const addProduct = (productData) => API.post('/admin/products', productData);
+export const fetchMostSelling = () => API.get('/products/most-selling');
 
 // --- Order Functions ---
 export const createOrder = (orderData) => API.post('/orders', orderData);
 export const getOrderHistory = () => API.get('/orders/my-orders');
 
 // --- Admin-Only Functions ---
+export const getAllProductsAdmin = () => API.get('/admin/products');
 export const getAllOrders = (filters) => API.get('/admin/orders', { params: filters });
-// 3. Export the API instance itself as the default export
+export const updateOrderStatus = (orderId, status) => API.patch(`/admin/orders/${orderId}/status`, { status });
+export const deleteProduct = (id) => API.delete(`/admin/products/${id}`);
+export const updateProduct = (id, productData) => API.put(`/admin/products/${id}`, productData);
+export const getAnalytics = () => API.get('/admin/analytics');
 
 export const updateUserProfile = (profileData) => API.put('/auth/profile', profileData);
 export default API;

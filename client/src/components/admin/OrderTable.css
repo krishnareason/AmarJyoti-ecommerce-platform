@@ -1,13 +1,7 @@
-.order-table-container {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.order-table-container h3 {
+h3 {
     margin-top: 0;
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 table {
@@ -49,4 +43,13 @@ tbody tr:hover {
 
 .role-cell {
     text-transform: capitalize;
+}
+
+.status-dropdown {
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%; 
 }

@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { signup } from '../api'; // The signup function from our api file
-import './SignupPage.css'; // We will create this for styling
+import { signup } from '../api'; 
+import './SignupPage.css'; 
 
 const SignupPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { login } = useContext(AuthContext);
 
-    // Get the role from the navigation state, default to 'consumer' if not found
     const userRole = location.state?.userRole || 'consumer';
 
     const [formData, setFormData] = useState({
@@ -29,23 +28,14 @@ const SignupPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Clear previous errors
+        setError(''); 
 
         try {
-            // We pass the form data PLUS the role to our signup function
             const res = await signup({ ...formData, role: userRole });
-            
-            // The backend returns a token and user object on success
             const { token, user } = res.data;
-
-            // Use the login function from our AuthContext to update the state
             login(token, user);
-            
-            // Redirect to the shop page
             navigate('/shop');
-
         } catch (err) {
-            // Set the error message from the backend response
             setError(err.response?.data?.msg || 'An error occurred during signup.');
         }
     };
@@ -81,5 +71,4 @@ const SignupPage = () => {
     );
 };
 
-// This is the crucial line that was likely missing or incorrect
 export default SignupPage;

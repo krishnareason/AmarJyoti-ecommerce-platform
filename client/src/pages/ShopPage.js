@@ -22,7 +22,7 @@ const ShopPage = () => {
         };
 
         getProducts();
-    }, []); // The empty array [] ensures this effect runs only once when the component mounts
+    }, []); 
 
     if (loading) {
         return <div className="shop-page"><p>Loading products...</p></div>;

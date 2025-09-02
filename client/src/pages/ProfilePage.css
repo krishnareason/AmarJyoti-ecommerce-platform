@@ -40,7 +40,7 @@
 }
 
 .address-value {
-    white-space: pre-wrap; /* Allows the address to wrap lines */
+    white-space: pre-wrap; 
 }
 
 .role-value {

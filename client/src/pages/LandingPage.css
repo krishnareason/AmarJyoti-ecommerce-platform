@@ -1,13 +1,12 @@
 .landing-container {
-    height: 90vh; /* Takes up most of the viewport height */
+    height: 90vh;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
-    /* The background image will be set here */
-    background-image: url('../assets/images/background.jpg'); /* IMPORTANT: Image path */
+    background-image: url('../assets/images/background.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -18,45 +17,48 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .landing-content {
-    position: relative; /* Ensures this content sits on top of the overlay */
+    position: relative;
     z-index: 2;
-    padding: 20px;
+    padding: 3rem 1rem 2rem; 
 }
 
 .landing-content h1 {
-    font-size: 4rem; /* Large text for the brand name */
-    font-family: 'Playfair Display', serif; /* An elegant, spiritual-feeling font */
+    font-size: 12rem;
+    font-family: 'Playfair Display', serif;
     margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    line-height: 1; 
 }
 
 .landing-content p {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-style: italic;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .button-group {
     display: flex;
-    gap: 1.5rem; /* Space between the buttons */
+    gap: 2rem;
     justify-content: center;
 }
 
 .btn {
-    padding: 12px 24px;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
 }
 
 .btn-primary {
-    background-color: #f0ad4e; /* A warm, inviting gold/orange */
+    background-color: #f0ad4e;
     color: #fff;
 }
 
@@ -75,4 +77,24 @@
     background-color: #fff;
     color: #333;
     transform: translateY(-2px);
+}
+
+.featured-products {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.featured-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
